@@ -8,10 +8,14 @@
       <e p="QLSBD" t="IncludeRecursive">
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="BusinessLogics" t="Include" />
         <e p="Class" t="Include" />
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
         <e p="Form1.resx" t="Include" />
+        <e p="frmHome.cs" t="Include" />
+        <e p="frmHome.Designer.cs" t="Include" />
+        <e p="frmHome.resx" t="Include" />
         <e p="Image" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Program.cs" t="Include" />
@@ -23,6 +27,9 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="QLSBD.csproj" t="IncludeRecursive" />
+        <e p="test.cs" t="Include" />
+        <e p="test.Designer.cs" t="Include" />
+        <e p="test.resx" t="Include" />
       </e>
       <e p="QLSBD.sln" t="IncludeFlat" />
     </e>

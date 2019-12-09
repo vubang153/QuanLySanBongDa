@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLSBD", "QLSBD\QLSBD.csproj", "{02676442-38FE-4B20-97B1-9A904D1C4AB3}"
 EndProject
 Global
@@ -12,5 +15,11 @@ Global
 		{02676442-38FE-4B20-97B1-9A904D1C4AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02676442-38FE-4B20-97B1-9A904D1C4AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02676442-38FE-4B20-97B1-9A904D1C4AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C59A149-A4DE-437B-B3D3-FDBFD6CEA423}
 	EndGlobalSection
 EndGlobal
