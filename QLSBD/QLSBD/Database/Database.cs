@@ -18,6 +18,6 @@ namespace QLSBD.Database
             SqlConnection cnn = new SqlConnection();
             cnn.ConnectionString = cnn.ConnectionString = "Server=ADMIN\\SQLEXPRESS02;Database=QuanLySanBong;User Id=admin;Password=123456;";
             return cnn;
-        }
+        }  
     }
 }
