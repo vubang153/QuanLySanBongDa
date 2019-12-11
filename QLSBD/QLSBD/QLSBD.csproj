@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\clAdmin.cs" />
+    <Compile Include="Class\clBooking.cs" />
+    <Compile Include="Class\clCategory.cs" />
+    <Compile Include="Class\clPitch.cs" />
+    <Compile Include="Class\clUser.cs" />
+    <Compile Include="Commons\DB_QUERY.cs" />
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\tblUser.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLogics\" />
-    <Folder Include="Database\" />
     <Folder Include="Image\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

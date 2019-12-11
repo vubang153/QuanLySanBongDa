@@ -9,11 +9,7 @@ namespace QLSBD.Database
 {
     class Database
     {
-        public Database()
-        {
-
-        }
-        public SqlConnection getConnection()
+        public static SqlConnection getConnection()
         {
             SqlConnection cnn = new SqlConnection();
             cnn.ConnectionString = cnn.ConnectionString = "Server=ADMIN\\SQLEXPRESS02;Database=QuanLySanBong;User Id=admin;Password=123456;";

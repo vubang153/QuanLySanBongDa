@@ -2,9 +2,9 @@ C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\bin\Debug\QLSBD.exe.
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\bin\Debug\QLSBD.exe
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\bin\Debug\QLSBD.pdb
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.frmLogin.resources
+C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.frmHome.resources
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.Properties.Resources.resources
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.csproj.GenerateResource.cache
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.exe
 C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.pdb
-C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.frmHome.resources
-C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.frmLogin.resources

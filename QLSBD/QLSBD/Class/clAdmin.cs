@@ -11,14 +11,7 @@ namespace QLSBD.Class
         private string username;
         private string password;
 
-        public void setUsername(String username)
-        {
-            this.username = username;
-        }
-        public String getUsername()
-        {
-            return this.username;
-        }
-        
+        public string Username { get => username; set => username = value; }
+        public string Password { get => password; set => password = value; }
     }
 }
