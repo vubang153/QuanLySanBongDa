@@ -40,7 +40,7 @@ namespace QLSBD
             }
             else
             {
-                MessageBox.Show("Đăng nhập thất bại");
+                lbLoginError.Show();
             }
             /*lbLoginError.Visible = true*/
 
