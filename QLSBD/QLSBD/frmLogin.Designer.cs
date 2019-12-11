@@ -112,6 +112,7 @@
             // btnQuit
             // 
             this.btnQuit.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnQuit.Location = new System.Drawing.Point(410, 200);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(80, 27);
@@ -122,10 +123,12 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelButton = this.btnQuit;
             this.ClientSize = new System.Drawing.Size(766, 435);
             this.Controls.Add(this.lbLoginError);
             this.Controls.Add(this.btnQuit);
