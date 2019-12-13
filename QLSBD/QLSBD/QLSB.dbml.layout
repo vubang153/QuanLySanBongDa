@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="QLSB">
+  <DataContextMoniker Name="/QLSBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="43db8b3f-aad4-40e6-935d-48b07ff2f994" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/QLSBDataContext/admin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f28f6e95-1e06-4a73-8915-7b7c3c11f111" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f26c67e7-5ea4-43cc-aa25-5d0ce21181e1" absoluteBounds="3.75, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/QLSBDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67b7b20c-8224-448c-a15a-c39300d529e8" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3a85372-b569-436a-8c9f-2204221522cd" absoluteBounds="0.75, 3.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/QLSBDataContext/booking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8eaaf5f4-75ec-4f76-bc7e-770148c03b81" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7dd497c1-f36f-43e0-ab94-d1d8bf6d7593" absoluteBounds="3.75, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/QLSBDataContext/category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="987491be-aafd-42e4-91c5-a8809377a102" absoluteBounds="3.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3b175e5-be62-4955-ba51-f61edebba7e1" absoluteBounds="3.75, 5.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/QLSBDataContext/pitch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2b3258f-c030-46c6-beaf-c8431cd2e040" absoluteBounds="3.765, 6.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a44288e9-ae3b-4caa-96dc-8bd44dcc1bb6" absoluteBounds="6.375, 2.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/QLSBDataContext/note" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71944674-1e48-448d-a7f7-25f33815cd0a" absoluteBounds="6.39, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

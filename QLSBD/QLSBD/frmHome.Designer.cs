@@ -58,14 +58,15 @@ namespace QLSBD
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPitchInfo = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbbNote = new System.Windows.Forms.ComboBox();
             this.cbbEmployee = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,15 +74,11 @@ namespace QLSBD
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tbP = new System.Windows.Forms.TextBox();
+            this.cbbCategory = new System.Windows.Forms.ComboBox();
             this.tbCustomerId = new System.Windows.Forms.TextBox();
-            this.tbTicketId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,7 +88,7 @@ namespace QLSBD
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPitchInfo)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -362,7 +359,7 @@ namespace QLSBD
             // panel6
             // 
             this.panel6.Controls.Add(this.dataGridView2);
-            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Controls.Add(this.dgvPitchInfo);
             this.panel6.Location = new System.Drawing.Point(4, 94);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1119, 287);
@@ -376,18 +373,18 @@ namespace QLSBD
             this.dataGridView2.Size = new System.Drawing.Size(488, 276);
             this.dataGridView2.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvPitchInfo
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-6, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(618, 280);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvPitchInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPitchInfo.Location = new System.Drawing.Point(-6, 4);
+            this.dgvPitchInfo.Name = "dgvPitchInfo";
+            this.dgvPitchInfo.ReadOnly = true;
+            this.dgvPitchInfo.Size = new System.Drawing.Size(618, 280);
+            this.dgvPitchInfo.TabIndex = 0;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnClose);
-            this.panel5.Controls.Add(this.btnPrint);
             this.panel5.Controls.Add(this.btnDelete);
             this.panel5.Controls.Add(this.btnEdit);
             this.panel5.Controls.Add(this.button1);
@@ -403,7 +400,7 @@ namespace QLSBD
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnClose.Location = new System.Drawing.Point(456, 17);
+            this.btnClose.Location = new System.Drawing.Point(439, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(5);
             this.btnClose.Size = new System.Drawing.Size(79, 43);
@@ -412,22 +409,6 @@ namespace QLSBD
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.White;
-            this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
-            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnPrint.Location = new System.Drawing.Point(343, 17);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Padding = new System.Windows.Forms.Padding(5);
-            this.btnPrint.Size = new System.Drawing.Size(79, 43);
-            this.btnPrint.TabIndex = 3;
-            this.btnPrint.Text = "In";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
@@ -435,7 +416,7 @@ namespace QLSBD
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnDelete.Location = new System.Drawing.Point(227, 17);
+            this.btnDelete.Location = new System.Drawing.Point(298, 17);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(5);
             this.btnDelete.Size = new System.Drawing.Size(79, 43);
@@ -451,7 +432,7 @@ namespace QLSBD
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnEdit.Location = new System.Drawing.Point(123, 17);
+            this.btnEdit.Location = new System.Drawing.Point(148, 17);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Padding = new System.Windows.Forms.Padding(5);
             this.btnEdit.Size = new System.Drawing.Size(79, 43);
@@ -464,7 +445,7 @@ namespace QLSBD
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.button1.Location = new System.Drawing.Point(16, 17);
@@ -490,6 +471,20 @@ namespace QLSBD
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(496, 129);
             this.panel3.TabIndex = 1;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(131, 32);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(352, 20);
+            this.dateTimePicker2.TabIndex = 9;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(131, 4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(352, 20);
+            this.dateTimePicker1.TabIndex = 9;
             // 
             // cbbNote
             // 
@@ -545,42 +540,34 @@ namespace QLSBD
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.tbP);
+            this.panel2.Controls.Add(this.cbbCategory);
             this.panel2.Controls.Add(this.tbCustomerId);
-            this.panel2.Controls.Add(this.tbTicketId);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(8, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(562, 129);
             this.panel2.TabIndex = 0;
             // 
-            // tbP
+            // cbbCategory
             // 
-            this.tbP.Location = new System.Drawing.Point(126, 64);
-            this.tbP.Name = "tbP";
-            this.tbP.Size = new System.Drawing.Size(363, 20);
-            this.tbP.TabIndex = 3;
+            this.cbbCategory.FormattingEnabled = true;
+            this.cbbCategory.Location = new System.Drawing.Point(126, 62);
+            this.cbbCategory.Name = "cbbCategory";
+            this.cbbCategory.Size = new System.Drawing.Size(363, 21);
+            this.cbbCategory.TabIndex = 4;
             // 
             // tbCustomerId
             // 
-            this.tbCustomerId.Location = new System.Drawing.Point(126, 38);
+            this.tbCustomerId.Location = new System.Drawing.Point(126, 8);
             this.tbCustomerId.Name = "tbCustomerId";
             this.tbCustomerId.Size = new System.Drawing.Size(363, 20);
             this.tbCustomerId.TabIndex = 3;
             // 
-            // tbTicketId
-            // 
-            this.tbTicketId.Location = new System.Drawing.Point(126, 11);
-            this.tbTicketId.Name = "tbTicketId";
-            this.tbTicketId.Size = new System.Drawing.Size(363, 20);
-            this.tbTicketId.TabIndex = 3;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 65);
+            this.label4.Location = new System.Drawing.Point(16, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 2;
@@ -589,20 +576,11 @@ namespace QLSBD
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 38);
+            this.label3.Location = new System.Drawing.Point(16, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã khách hàng";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Mã phiếu đặt sân";
             // 
             // tabControl1
             // 
@@ -615,20 +593,6 @@ namespace QLSBD
             this.tabControl1.Size = new System.Drawing.Size(1176, 612);
             this.tabControl1.TabIndex = 0;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(131, 4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(352, 20);
-            this.dateTimePicker1.TabIndex = 9;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(131, 32);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(352, 20);
-            this.dateTimePicker2.TabIndex = 9;
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -639,7 +603,7 @@ namespace QLSBD
             this.MaximizeBox = false;
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmHome";
+            this.Text = "QUẢN LÝ SÂN BÓNG";
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -651,7 +615,7 @@ namespace QLSBD
             this.panel4.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPitchInfo)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -690,10 +654,9 @@ namespace QLSBD
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPitchInfo;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button button1;
@@ -705,14 +668,12 @@ namespace QLSBD
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox tbP;
         private System.Windows.Forms.TextBox tbCustomerId;
-        private System.Windows.Forms.TextBox tbTicketId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cbbCategory;
     }
 }
