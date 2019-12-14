@@ -66,5 +66,19 @@ namespace QLSBD
         {
 
         }
+
+        private void dgvPitchInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int numrow = e.RowIndex;
+            /*tbCustomerId.Text = dgvPitchInfo.Rows[numrow].Cells[1].Value.ToString();*/
+            /*cbbCategory.SelectedIndex = int.Parse(dgvPitchInfo.Rows[numrow].Cells[1].Value.ToString());*/
+            tbCustomerId.Text = dtpNgayDat.Value.ToString();
+            
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.loadDataToForm();
+        }
     }
 }

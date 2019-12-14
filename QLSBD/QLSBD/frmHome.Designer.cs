@@ -33,7 +33,7 @@ namespace QLSBD
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvDanhSachSanBong = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@ namespace QLSBD
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgayDat = new System.Windows.Forms.DateTimePicker();
             this.cbbNote = new System.Windows.Forms.ComboBox();
             this.cbbEmployee = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -79,8 +79,9 @@ namespace QLSBD
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachSanBong)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -98,7 +99,7 @@ namespace QLSBD
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPage2.Controls.Add(this.dataGridView3);
+            this.tabPage2.Controls.Add(this.dgvDanhSachSanBong);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.panel7);
             this.tabPage2.Controls.Add(this.panel8);
@@ -109,13 +110,13 @@ namespace QLSBD
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "QUẢN LÝ NHÂN VIÊN";
             // 
-            // dataGridView3
+            // dgvDanhSachSanBong
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(8, 232);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1135, 293);
-            this.dataGridView3.TabIndex = 5;
+            this.dgvDanhSachSanBong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhSachSanBong.Location = new System.Drawing.Point(8, 232);
+            this.dgvDanhSachSanBong.Name = "dgvDanhSachSanBong";
+            this.dgvDanhSachSanBong.Size = new System.Drawing.Size(1135, 293);
+            this.dgvDanhSachSanBong.TabIndex = 5;
             // 
             // panel1
             // 
@@ -381,10 +382,12 @@ namespace QLSBD
             this.dgvPitchInfo.ReadOnly = true;
             this.dgvPitchInfo.Size = new System.Drawing.Size(618, 280);
             this.dgvPitchInfo.TabIndex = 0;
+            this.dgvPitchInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPitchInfo_CellClick);
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnClose);
+            this.panel5.Controls.Add(this.btnRefresh);
             this.panel5.Controls.Add(this.btnDelete);
             this.panel5.Controls.Add(this.btnEdit);
             this.panel5.Controls.Add(this.button1);
@@ -400,7 +403,7 @@ namespace QLSBD
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnClose.Location = new System.Drawing.Point(439, 17);
+            this.btnClose.Location = new System.Drawing.Point(458, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(5);
             this.btnClose.Size = new System.Drawing.Size(79, 43);
@@ -416,7 +419,7 @@ namespace QLSBD
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnDelete.Location = new System.Drawing.Point(298, 17);
+            this.btnDelete.Location = new System.Drawing.Point(215, 17);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(5);
             this.btnDelete.Size = new System.Drawing.Size(79, 43);
@@ -432,7 +435,7 @@ namespace QLSBD
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnEdit.Location = new System.Drawing.Point(148, 17);
+            this.btnEdit.Location = new System.Drawing.Point(110, 17);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Padding = new System.Windows.Forms.Padding(5);
             this.btnEdit.Size = new System.Drawing.Size(79, 43);
@@ -460,7 +463,7 @@ namespace QLSBD
             // panel3
             // 
             this.panel3.Controls.Add(this.dateTimePicker2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.dtpNgayDat);
             this.panel3.Controls.Add(this.cbbNote);
             this.panel3.Controls.Add(this.cbbEmployee);
             this.panel3.Controls.Add(this.label8);
@@ -479,12 +482,12 @@ namespace QLSBD
             this.dateTimePicker2.Size = new System.Drawing.Size(352, 20);
             this.dateTimePicker2.TabIndex = 9;
             // 
-            // dateTimePicker1
+            // dtpNgayDat
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(131, 4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(352, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpNgayDat.Location = new System.Drawing.Point(131, 4);
+            this.dtpNgayDat.Name = "dtpNgayDat";
+            this.dtpNgayDat.Size = new System.Drawing.Size(352, 20);
+            this.dtpNgayDat.TabIndex = 9;
             // 
             // cbbNote
             // 
@@ -578,9 +581,9 @@ namespace QLSBD
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Mã khách hàng";
+            this.label3.Text = "Mã hoá đơn";
             // 
             // tabControl1
             // 
@@ -592,6 +595,23 @@ namespace QLSBD
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1176, 612);
             this.tabControl1.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.White;
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnRefresh.Location = new System.Drawing.Point(311, 17);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Padding = new System.Windows.Forms.Padding(5);
+            this.btnRefresh.Size = new System.Drawing.Size(79, 43);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmHome
             // 
@@ -605,7 +625,7 @@ namespace QLSBD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ SÂN BÓNG";
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachSanBong)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -629,7 +649,7 @@ namespace QLSBD
         #endregion
 
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvDanhSachSanBong;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -673,7 +693,8 @@ namespace QLSBD
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpNgayDat;
         private System.Windows.Forms.ComboBox cbbCategory;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
