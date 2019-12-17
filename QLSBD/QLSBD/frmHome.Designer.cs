@@ -36,7 +36,7 @@ namespace QLSBD
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnReloadFormPitchList = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnEditPitch = new System.Windows.Forms.Button();
             this.btnAddNewPitch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -116,7 +116,7 @@ namespace QLSBD
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.btnReloadFormPitchList);
             this.panel7.Controls.Add(this.button3);
-            this.panel7.Controls.Add(this.button4);
+            this.panel7.Controls.Add(this.btnEditPitch);
             this.panel7.Controls.Add(this.btnAddNewPitch);
             this.panel7.Location = new System.Drawing.Point(8, 176);
             this.panel7.Name = "panel7";
@@ -156,21 +156,22 @@ namespace QLSBD
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnEditPitch
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(160, 21);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(5);
-            this.button4.Size = new System.Drawing.Size(85, 43);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Sửa";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnEditPitch.BackColor = System.Drawing.Color.White;
+            this.btnEditPitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditPitch.Enabled = false;
+            this.btnEditPitch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEditPitch.Image = ((System.Drawing.Image)(resources.GetObject("btnEditPitch.Image")));
+            this.btnEditPitch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditPitch.Location = new System.Drawing.Point(160, 21);
+            this.btnEditPitch.Name = "btnEditPitch";
+            this.btnEditPitch.Padding = new System.Windows.Forms.Padding(5);
+            this.btnEditPitch.Size = new System.Drawing.Size(85, 43);
+            this.btnEditPitch.TabIndex = 6;
+            this.btnEditPitch.Text = "Sửa";
+            this.btnEditPitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditPitch.UseVisualStyleBackColor = false;
             // 
             // btnAddNewPitch
             // 
@@ -705,7 +706,7 @@ namespace QLSBD
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnReloadFormPitchList;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnEditPitch;
         private System.Windows.Forms.Button btnAddNewPitch;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label1;
