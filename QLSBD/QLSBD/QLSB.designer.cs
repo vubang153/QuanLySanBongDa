@@ -106,19 +106,19 @@ namespace QLSBD
 			}
 		}
 		
-		public System.Data.Linq.Table<pitch> pitches
-		{
-			get
-			{
-				return this.GetTable<pitch>();
-			}
-		}
-		
 		public System.Data.Linq.Table<note> notes
 		{
 			get
 			{
 				return this.GetTable<note>();
+			}
+		}
+		
+		public System.Data.Linq.Table<pitch> pitches
+		{
+			get
+			{
+				return this.GetTable<pitch>();
 			}
 		}
 	}
@@ -612,6 +612,51 @@ namespace QLSBD
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.note")]
+	public partial class note
+	{
+		
+		private System.Nullable<int> _id;
+		
+		private string _note1;
+		
+		public note()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int")]
+		public System.Nullable<int> id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="note", Storage="_note1", DbType="NVarChar(50)")]
+		public string note1
+		{
+			get
+			{
+				return this._note1;
+			}
+			set
+			{
+				if ((this._note1 != value))
+				{
+					this._note1 = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pitch")]
 	public partial class pitch : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -627,10 +672,6 @@ namespace QLSBD
 		private string _address;
 		
 		private int _number;
-		
-		private System.DateTime _start_time;
-		
-		private System.DateTime _end_time;
 		
 		private int _status;
 		
@@ -648,10 +689,6 @@ namespace QLSBD
     partial void OnaddressChanged();
     partial void OnnumberChanging(int value);
     partial void OnnumberChanged();
-    partial void Onstart_timeChanging(System.DateTime value);
-    partial void Onstart_timeChanged();
-    partial void Onend_timeChanging(System.DateTime value);
-    partial void Onend_timeChanged();
     partial void OnstatusChanging(int value);
     partial void OnstatusChanged();
     #endregion
@@ -761,46 +798,6 @@ namespace QLSBD
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_time", DbType="DateTime NOT NULL")]
-		public System.DateTime start_time
-		{
-			get
-			{
-				return this._start_time;
-			}
-			set
-			{
-				if ((this._start_time != value))
-				{
-					this.Onstart_timeChanging(value);
-					this.SendPropertyChanging();
-					this._start_time = value;
-					this.SendPropertyChanged("start_time");
-					this.Onstart_timeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_end_time", DbType="DateTime NOT NULL")]
-		public System.DateTime end_time
-		{
-			get
-			{
-				return this._end_time;
-			}
-			set
-			{
-				if ((this._end_time != value))
-				{
-					this.Onend_timeChanging(value);
-					this.SendPropertyChanging();
-					this._end_time = value;
-					this.SendPropertyChanged("end_time");
-					this.Onend_timeChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
 		public int status
 		{
@@ -838,51 +835,6 @@ namespace QLSBD
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.note")]
-	public partial class note
-	{
-		
-		private System.Nullable<int> _id;
-		
-		private string _note1;
-		
-		public note()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int")]
-		public System.Nullable<int> id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this._id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="note", Storage="_note1", DbType="NVarChar(50)")]
-		public string note1
-		{
-			get
-			{
-				return this._note1;
-			}
-			set
-			{
-				if ((this._note1 != value))
-				{
-					this._note1 = value;
-				}
 			}
 		}
 	}

@@ -33,9 +33,9 @@ namespace QLSBD
             admin.Username = txtUsername.Text;
             admin.Password = txtPassword.Text;
             var query = from table in db.admins
-                       where table.username.Equals(admin.Username) && table.password.Equals(admin.Password)
-                       select table;
-            if (query.ToList().Count >0)
+                        where table.username.Equals(admin.Username) && table.password.Equals(admin.Password)
+                        select table;
+            if (query.ToList().Count > 0)
             {
                 frmHome frmHome = new frmHome();
                 this.Hide();
@@ -62,7 +62,7 @@ namespace QLSBD
 
         }
 
-        
+
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();

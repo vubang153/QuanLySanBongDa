@@ -53,6 +53,7 @@
     <Compile Include="Class\clPitch.cs" />
     <Compile Include="Class\clUser.cs" />
     <Compile Include="Commons\DB_QUERY.cs" />
+    <Compile Include="Commons\FORM.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\tblUser.cs" />
     <Compile Include="frmLogin.cs">
