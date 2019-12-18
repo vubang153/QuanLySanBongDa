@@ -35,7 +35,7 @@ namespace QLSBD
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnReloadFormPitchList = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDeletePitch = new System.Windows.Forms.Button();
             this.btnEditPitch = new System.Windows.Forms.Button();
             this.btnAddNewPitch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -115,7 +115,7 @@ namespace QLSBD
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.btnReloadFormPitchList);
-            this.panel7.Controls.Add(this.button3);
+            this.panel7.Controls.Add(this.btnDeletePitch);
             this.panel7.Controls.Add(this.btnEditPitch);
             this.panel7.Controls.Add(this.btnAddNewPitch);
             this.panel7.Location = new System.Drawing.Point(8, 176);
@@ -140,21 +140,22 @@ namespace QLSBD
             this.btnReloadFormPitchList.UseVisualStyleBackColor = false;
             this.btnReloadFormPitchList.Click += new System.EventHandler(this.btnReloadFormPitchList_Click);
             // 
-            // button3
+            // btnDeletePitch
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(296, 21);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(5);
-            this.button3.Size = new System.Drawing.Size(90, 43);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Xoá";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnDeletePitch.BackColor = System.Drawing.Color.White;
+            this.btnDeletePitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDeletePitch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeletePitch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletePitch.Image")));
+            this.btnDeletePitch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeletePitch.Location = new System.Drawing.Point(296, 21);
+            this.btnDeletePitch.Name = "btnDeletePitch";
+            this.btnDeletePitch.Padding = new System.Windows.Forms.Padding(5);
+            this.btnDeletePitch.Size = new System.Drawing.Size(90, 43);
+            this.btnDeletePitch.TabIndex = 7;
+            this.btnDeletePitch.Text = "Xoá";
+            this.btnDeletePitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeletePitch.UseVisualStyleBackColor = false;
+            this.btnDeletePitch.Click += new System.EventHandler(this.btnDeletePitch_Click);
             // 
             // btnEditPitch
             // 
@@ -172,6 +173,7 @@ namespace QLSBD
             this.btnEditPitch.Text = "Sửa";
             this.btnEditPitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditPitch.UseVisualStyleBackColor = false;
+            this.btnEditPitch.Click += new System.EventHandler(this.btnEditPitch_Click);
             // 
             // btnAddNewPitch
             // 
@@ -297,6 +299,7 @@ namespace QLSBD
             this.dgvPitchList.Name = "dgvPitchList";
             this.dgvPitchList.Size = new System.Drawing.Size(1135, 253);
             this.dgvPitchList.TabIndex = 9;
+            this.dgvPitchList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPitchList_CellClick);
             // 
             // tabControl1
             // 
@@ -705,7 +708,7 @@ namespace QLSBD
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnReloadFormPitchList;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDeletePitch;
         private System.Windows.Forms.Button btnEditPitch;
         private System.Windows.Forms.Button btnAddNewPitch;
         private System.Windows.Forms.Panel panel8;

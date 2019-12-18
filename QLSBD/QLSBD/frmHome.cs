@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Linq;
 using System.Data.Linq;
+using System.Collections.Generic;
 
 namespace QLSBD
 {
@@ -20,6 +21,7 @@ namespace QLSBD
                                      MessageBoxButtons.YesNo);
             return confirmResult;
         }
+        // Hàm get tất cả dữ liệu từ db đổ ra form
         private void loadDataToForm()
         {
             this.showDgvPitchInfo();
@@ -30,12 +32,14 @@ namespace QLSBD
             this.setCbbTypeOfStatus();
             this.showDgvPitchList();
         }
+        // Hàm set kiểu booking
         private void setCbbTypeOfStatus()
         {
             cbbBookingType.Items.Add("Đặt ngay");
             cbbBookingType.Items.Add("Đặt trước");
             cbbBookingType.SelectedItem = "Đặt ngay";
         }
+        // Hàm in ra giá trị của phần chọn thời gian
         private void setTimePicker()
         {
             for (int i = 0; i < 11; i++)
@@ -50,6 +54,7 @@ namespace QLSBD
             cbbHoursPicker.SelectedItem = 1;
             cbbMinutePicker.SelectedItem = 0;
         }
+        // Hiện datagridview bảng booking(join 3 bảng booking, pitch, admin)
         private void showDgvPitchInfo()
         {
 
@@ -66,6 +71,7 @@ namespace QLSBD
                         };
             dgvPitchInfo.DataSource = query;
         }
+        // Hiện datagridview các sân bên tab Thông tin sân
         private void showDgvPitchList()
         {
             var query = from pitch in db.pitches
@@ -74,10 +80,12 @@ namespace QLSBD
                             STT = pitch.id,
                             Tên_sân = pitch.name,
                             Giới_thiệu = pitch.introduction,
+                            Địa_chỉ = pitch.address,
                             Trạng_thái = pitch.status
                         };
             this.dgvPitchList.DataSource = query;
         }
+        // Hàm lấy giá trị từ bảng admin đẩy ra combobox
         private void showCbbEmployees()
         {
             var query = from admin in db.admins
@@ -86,6 +94,7 @@ namespace QLSBD
             cbbCreater.DisplayMember = "username";
             cbbCreater.ValueMember = "id";
         }
+        // Hàm hlấy giá trị từ bảng category đẩy ra combobox
         private void showCbbCategory(System.Windows.Forms.ComboBox cbbCategory)
         {
             var query = from category in db.categories
@@ -94,17 +103,7 @@ namespace QLSBD
             cbbCategory.DisplayMember = "category1";
             cbbCategory.ValueMember = "id";
         }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Hàm khi click vào cel; của datagridview
         private void dgvPitchInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int numrow = e.RowIndex;
@@ -112,19 +111,19 @@ namespace QLSBD
             /*cbbCategory.SelectedIndex = int.Parse(dgvPitchInfo.Rows[numrow].Cells[1].Value.ToString());*/
 
         }
-
+        // Hàm làm click làm mới form
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             this.loadDataToForm();
         }
-
+        // Hàm load tất cả dữ liệu từ db
         private void frmHome_Load(object sender, EventArgs e)
         {
             this.btnConfirm.Visible = false;
             this.loadDataToForm();
 
         }
-
+        // Sự kiện click vào nút Thêm bên bảng Quản lý sân bóng
         private void button1_Click(object sender, EventArgs e)
         {
             var confirmResult = this.messageConfirm("Bạn muốn thêm hoá đơn này chứ ?");
@@ -144,7 +143,7 @@ namespace QLSBD
                 String bookingType = cbbBookingType.Text;
                 // Set giá trị vào thực thể
                 booking.id_pitch = pitchIndex;
-                booking.time = bookingDate;
+                booking.time = timeBooking;
                 booking.message = note;
                 booking.price = 1000000;
                 booking.id_user = creater;
@@ -153,30 +152,41 @@ namespace QLSBD
                 db.SubmitChanges();
             }
         }
-
+        // Hàm thêm sân bóng bên tabPanel thông tin sân
         private void btnAddNewPitch_Click(object sender, EventArgs e)
         {
+            // Kiểm tra nếu các ô còn trốgn thì không cho phép insert
 
-            // Lấy giá trị từ form
             string pitchName = tbPitchName.Text;
-            int pitchType = cbbTypeOfPitch.SelectedIndex;
+            int pitchType = Convert.ToInt32(cbbTypeOfPitch.SelectedValue.ToString());
             string pitchAddress = tbPitchAddress.Text;
             string pitchIntroduction = tbPitchIntroduction.Text;
+
             // Khởi tạo đối tượng
             pitch pitch = new pitch();
             pitch.name = pitchName;
             pitch.introduction = pitchIntroduction;
-            pitch.number = pitchType;
+            pitch.id_category= pitchType;
             pitch.address = pitchAddress;
             // Xác nhận và Insert vào csdl
             var confirmResult = this.messageConfirm("Bạn muốn thêm sân bóng này chứ ?");
             if (confirmResult == DialogResult.Yes)
             {
-                db.pitches.InsertOnSubmit(pitch);
-                db.SubmitChanges();
-                // reload trang
-                this.reloadTabPitchList();
+                if (tbPitchAddress.Text == "" || tbPitchIntroduction.Text == "" || tbPitchName.Text == "")
+                {
+                    MessageBox.Show("Bạn cần nhập vào các truờng");
+                }
+                else
+                {
+                    db.pitches.InsertOnSubmit(pitch);
+                    db.SubmitChanges();
+                    // reload trang
+                    this.reloadTabPitchList();
+                }
             }
+
+            // Lấy giá trị từ form
+
         }
         // Hàm tải lại thông tin sân
         private void reloadTabPitchList()
@@ -187,10 +197,47 @@ namespace QLSBD
             tbPitchIntroduction.Text = "";
             this.showDgvPitchList();
         }
-
+        // Phần này là phần bên thông tin sân(đang làm)
         private void btnReloadFormPitchList_Click(object sender, EventArgs e)
         {
             this.reloadTabPitchList();
+        }
+
+        private void btnEditPitch_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dgvPitchList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbPitchName.Text = dgvPitchList.CurrentRow.Cells["Tên_sân"].Value.ToString();
+            tbPitchIntroduction.Text = dgvPitchList.CurrentRow.Cells["Giới_thiệu"].Value.ToString();
+            tbPitchName.Text = dgvPitchList.CurrentRow.Cells["Tên_sân"].Value.ToString();
+            tbPitchAddress.Text = dgvPitchList.CurrentRow.Cells["Địa_chỉ"].Value.ToString();
+            btnEditPitch.Enabled = true;
+        }
+
+        private void btnDeletePitch_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dgvPitchList.CurrentRow.Cells["STT"].Value.ToString());
+            var query = (from pitch in db.pitches
+                         where pitch.id == id
+                         select pitch).FirstOrDefault();
+            if (query != null)
+            {
+                var confirm = this.messageConfirm("Bạn muốn xoá sân này chứ ?");
+                if (confirm == DialogResult.Yes)
+                {
+                    db.pitches.DeleteOnSubmit(query);
+                    db.SubmitChanges();
+                    this.reloadTabPitchList();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Lỗi ! Xin thử lại");
+            }
         }
     }
 }
