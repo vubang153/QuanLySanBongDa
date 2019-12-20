@@ -161,7 +161,6 @@ namespace QLSBD
             // 
             this.btnEditPitch.BackColor = System.Drawing.Color.White;
             this.btnEditPitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEditPitch.Enabled = false;
             this.btnEditPitch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditPitch.Image = ((System.Drawing.Image)(resources.GetObject("btnEditPitch.Image")));
             this.btnEditPitch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -79,6 +79,7 @@ namespace QLSBD
                         {
                             STT = pitch.id,
                             Tên_sân = pitch.name,
+                            Loại_sân = pitch.id_category,
                             Giới_thiệu = pitch.introduction,
                             Địa_chỉ = pitch.address,
                             Trạng_thái = pitch.status
@@ -120,6 +121,7 @@ namespace QLSBD
         private void frmHome_Load(object sender, EventArgs e)
         {
             this.btnConfirm.Visible = false;
+            this.btnEditPitch.Enabled = false;
             this.loadDataToForm();
 
         }
@@ -205,7 +207,34 @@ namespace QLSBD
 
         private void btnEditPitch_Click(object sender, EventArgs e)
         {
+            if (this.messageConfirm("Bạn muốn sửa chứ ?") == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(dgvPitchList.CurrentRow.Cells["STT"].Value.ToString());
+                var query = from pitch in db.pitches
+                            where pitch.id == id
+                            select pitch;
+                foreach (pitch pitch in query)
+                {
+                    pitch.id_category = Convert.ToInt32(cbbTypeOfPitch.SelectedValue.ToString());
+                    pitch.name = tbPitchName.Text.ToString();
+                    pitch.introduction = tbPitchIntroduction.Text.ToString();
+                    pitch.address = tbPitchAddress.Text.ToString();
+                }
+                try
+                {
+                    db.SubmitChanges();
+                    MessageBox.Show("Sửa thành công");
+                    this.reloadTabPitchList();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi !!!");
+                }
+                
+            }
             
+            
+
         }
 
         private void dgvPitchList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -228,9 +257,17 @@ namespace QLSBD
                 var confirm = this.messageConfirm("Bạn muốn xoá sân này chứ ?");
                 if (confirm == DialogResult.Yes)
                 {
-                    db.pitches.DeleteOnSubmit(query);
-                    db.SubmitChanges();
-                    this.reloadTabPitchList();
+                    try
+                    {
+                        db.pitches.DeleteOnSubmit(query);
+                        db.SubmitChanges();
+                        this.reloadTabPitchList();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi !!!");
+                    }
+                    
                 }
 
             }
@@ -238,6 +275,11 @@ namespace QLSBD
             {
                 MessageBox.Show("Lỗi ! Xin thử lại");
             }
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
