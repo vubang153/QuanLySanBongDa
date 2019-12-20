@@ -26,27 +26,13 @@ namespace QLSBD
         {
             this.showDgvPitchInfo();
             this.showCbbEmployees();
-            this.showCbbCategory(cbbPitchName);
+            this.showCbbPitchName();
             this.showCbbCategory(cbbTypeOfPitch);
-            this.setTimePicker();
             this.showDgvPitchList();
         }
       
         // Hàm in ra giá trị của phần chọn thời gian
-        private void setTimePicker()
-        {
-            for (int i = 0; i < 11; i++)
-            {
-                cbbHoursPicker.Items.Add(i);
-            }
-            for (int i = 0; i < 46;)
-            {
-                cbbMinutePicker.Items.Add(i);
-                i += 15;
-            }
-            cbbHoursPicker.SelectedItem = 1;
-            cbbMinutePicker.SelectedItem = 0;
-        }
+        
         // Hiện datagridview bảng booking(join 3 bảng booking, pitch, admin)
         private void showDgvPitchInfo()
         {
@@ -57,10 +43,11 @@ namespace QLSBD
                         select new
                         {
                             Tên_sân = pitch.name,
-                            Thời_gian = booking.time,
+                            Thời_gian_bắt_đầu = booking.start_time,
+                            Thời_gian_kết_thúc = booking.end_time,
                             Giá = booking.price,
                             Ghi_chú = booking.message,
-                            Người_lập = staff.username,
+                            trạng_thái = booking.status,
                         };
             dgvPitchInfo.DataSource = query;
         }
@@ -88,6 +75,15 @@ namespace QLSBD
             cbbCreater.DisplayMember = "username";
             cbbCreater.ValueMember = "id";
         }
+        private void showCbbPitchName()
+        {
+            var query = from pitch in db.pitches
+                        select pitch;
+            cbbPitchName.DataSource = query.ToList();
+            cbbPitchName.DisplayMember = "name";
+            cbbPitchName.ValueMember = "id";
+
+        }
         // Hàm hlấy giá trị từ bảng category đẩy ra combobox
         private void showCbbCategory(System.Windows.Forms.ComboBox cbbCategory)
         {
@@ -113,39 +109,12 @@ namespace QLSBD
         // Hàm load tất cả dữ liệu từ db
         private void frmHome_Load(object sender, EventArgs e)
         {
-            this.btnConfirm.Visible = false;
             this.btnEditPitch.Enabled = false;
             this.loadDataToForm();
 
         }
         // Sự kiện click vào nút Thêm bên bảng Quản lý sân bóng
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var confirmResult = this.messageConfirm("Bạn muốn thêm hoá đơn này chứ ?");
-            if (confirmResult == DialogResult.Yes)
-            {
-                // Convert phần tử
-                int hoursPicker = Convert.ToInt32(cbbHoursPicker.SelectedItem.ToString());
-                int minutesPicker = Convert.ToInt32(cbbMinutePicker.SelectedItem.ToString());
-                // Khai báo class Booking
-                booking booking = new booking();
-                // Get các giá trị từ form
-                int pitchIndex = cbbPitchName.SelectedIndex;
-                DateTime bookingDate = dtpBookingDate.Value;
-                int timeBooking = (60 * hoursPicker) + minutesPicker;
-                int creater = cbbCreater.SelectedIndex;
-                string note = tbNote.Text;
-                // Set giá trị vào thực thể
-                booking.id_pitch = pitchIndex;
-                booking.time = timeBooking;
-                booking.message = note;
-                booking.price = 1000000;
-                booking.id_user = creater;
-                booking.id = 7;
-                db.bookings.InsertOnSubmit(booking);
-                db.SubmitChanges();
-            }
-        }
+      
         // Hàm thêm sân bóng bên tabPanel thông tin sân
         private void btnAddNewPitch_Click(object sender, EventArgs e)
         {
@@ -269,9 +238,6 @@ namespace QLSBD
             }
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }

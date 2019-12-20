@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="quanlysanbong" Class="QLSBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="quanlysanbong" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=quanlysanbong;Persist Security Info=True;User ID=luan" SettingsObjectName="QLSBD.Properties.Settings" SettingsPropertyName="quanlysanbongConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.admin" Member="admins">
     <Type Name="admin">
@@ -13,11 +13,12 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_pitch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="start_time" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="end_time" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="book_day" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="start_time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="end_time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="message" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="admin_booking" Member="admin" ThisKey="id_user" OtherKey="id" Type="admin" IsForeignKey="true" />
       <Association Name="pitch_booking" Member="pitch" ThisKey="id_pitch" OtherKey="id" Type="pitch" IsForeignKey="true" />
     </Type>

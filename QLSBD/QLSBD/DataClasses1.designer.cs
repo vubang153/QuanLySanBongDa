@@ -23,7 +23,7 @@ namespace QLSBD
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="quanlysanbong")]
-	public partial class QLSBDataContext : System.Data.Linq.DataContext
+	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -44,31 +44,31 @@ namespace QLSBD
     partial void Deletepitch(pitch instance);
     #endregion
 		
-		public QLSBDataContext() : 
+		public DataClasses1DataContext() : 
 				base(global::QLSBD.Properties.Settings.Default.quanlysanbongConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLSBDataContext(string connection) : 
+		public DataClasses1DataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLSBDataContext(System.Data.IDbConnection connection) : 
+		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLSBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLSBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -257,15 +257,17 @@ namespace QLSBD
 		
 		private int _id_pitch;
 		
-		private string _start_time;
+		private System.DateTime _book_day;
 		
-		private string _end_time;
+		private int _start_time;
 		
-		private int _time;
+		private int _end_time;
 		
 		private string _message;
 		
 		private double _price;
+		
+		private int _status;
 		
 		private EntityRef<admin> _admin;
 		
@@ -281,16 +283,18 @@ namespace QLSBD
     partial void Onid_userChanged();
     partial void Onid_pitchChanging(int value);
     partial void Onid_pitchChanged();
-    partial void Onstart_timeChanging(string value);
+    partial void Onbook_dayChanging(System.DateTime value);
+    partial void Onbook_dayChanged();
+    partial void Onstart_timeChanging(int value);
     partial void Onstart_timeChanged();
-    partial void Onend_timeChanging(string value);
+    partial void Onend_timeChanging(int value);
     partial void Onend_timeChanged();
-    partial void OntimeChanging(int value);
-    partial void OntimeChanged();
     partial void OnmessageChanging(string value);
     partial void OnmessageChanged();
     partial void OnpriceChanging(double value);
     partial void OnpriceChanged();
+    partial void OnstatusChanging(int value);
+    partial void OnstatusChanged();
     #endregion
 		
 		public booking()
@@ -368,8 +372,28 @@ namespace QLSBD
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_time", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string start_time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_book_day", DbType="DateTime NOT NULL")]
+		public System.DateTime book_day
+		{
+			get
+			{
+				return this._book_day;
+			}
+			set
+			{
+				if ((this._book_day != value))
+				{
+					this.Onbook_dayChanging(value);
+					this.SendPropertyChanging();
+					this._book_day = value;
+					this.SendPropertyChanged("book_day");
+					this.Onbook_dayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_time", DbType="Int NOT NULL")]
+		public int start_time
 		{
 			get
 			{
@@ -388,8 +412,8 @@ namespace QLSBD
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_end_time", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string end_time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_end_time", DbType="Int NOT NULL")]
+		public int end_time
 		{
 			get
 			{
@@ -404,26 +428,6 @@ namespace QLSBD
 					this._end_time = value;
 					this.SendPropertyChanged("end_time");
 					this.Onend_timeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="Int NOT NULL")]
-		public int time
-		{
-			get
-			{
-				return this._time;
-			}
-			set
-			{
-				if ((this._time != value))
-				{
-					this.OntimeChanging(value);
-					this.SendPropertyChanging();
-					this._time = value;
-					this.SendPropertyChanged("time");
-					this.OntimeChanged();
 				}
 			}
 		}
@@ -464,6 +468,26 @@ namespace QLSBD
 					this._price = value;
 					this.SendPropertyChanged("price");
 					this.OnpriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
+		public int status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
 				}
 			}
 		}
