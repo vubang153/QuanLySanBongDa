@@ -33,19 +33,19 @@ namespace QLSBD
     partial void Insertadmin(admin instance);
     partial void Updateadmin(admin instance);
     partial void Deleteadmin(admin instance);
-    partial void Insertpitch(pitch instance);
-    partial void Updatepitch(pitch instance);
-    partial void Deletepitch(pitch instance);
     partial void Insertbooking(booking instance);
     partial void Updatebooking(booking instance);
     partial void Deletebooking(booking instance);
     partial void Insertcategory(category instance);
     partial void Updatecategory(category instance);
     partial void Deletecategory(category instance);
+    partial void Insertpitch(pitch instance);
+    partial void Updatepitch(pitch instance);
+    partial void Deletepitch(pitch instance);
     #endregion
 		
 		public QLSBDataContext() : 
-				base(global::QLSBD.Properties.Settings.Default.quanlysanbongConnectionString, mappingSource)
+				base(global::QLSBD.Properties.Settings.Default.quanlysanbongConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -82,14 +82,6 @@ namespace QLSBD
 			}
 		}
 		
-		public System.Data.Linq.Table<pitch> pitches
-		{
-			get
-			{
-				return this.GetTable<pitch>();
-			}
-		}
-		
 		public System.Data.Linq.Table<booking> bookings
 		{
 			get
@@ -103,6 +95,14 @@ namespace QLSBD
 			get
 			{
 				return this.GetTable<category>();
+			}
+		}
+		
+		public System.Data.Linq.Table<pitch> pitches
+		{
+			get
+			{
+				return this.GetTable<pitch>();
 			}
 		}
 	}
@@ -242,257 +242,6 @@ namespace QLSBD
 		{
 			this.SendPropertyChanging();
 			entity.admin = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pitch")]
-	public partial class pitch : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _name;
-		
-		private string _introduction;
-		
-		private string _address;
-		
-		private int _status;
-		
-		private int _id_category;
-		
-		private EntitySet<booking> _bookings;
-		
-		private EntityRef<category> _category;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnintroductionChanging(string value);
-    partial void OnintroductionChanged();
-    partial void OnaddressChanging(string value);
-    partial void OnaddressChanged();
-    partial void OnstatusChanging(int value);
-    partial void OnstatusChanged();
-    partial void Onid_categoryChanging(int value);
-    partial void Onid_categoryChanged();
-    #endregion
-		
-		public pitch()
-		{
-			this._bookings = new EntitySet<booking>(new Action<booking>(this.attach_bookings), new Action<booking>(this.detach_bookings));
-			this._category = default(EntityRef<category>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_introduction", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string introduction
-		{
-			get
-			{
-				return this._introduction;
-			}
-			set
-			{
-				if ((this._introduction != value))
-				{
-					this.OnintroductionChanging(value);
-					this.SendPropertyChanging();
-					this._introduction = value;
-					this.SendPropertyChanged("introduction");
-					this.OnintroductionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string address
-		{
-			get
-			{
-				return this._address;
-			}
-			set
-			{
-				if ((this._address != value))
-				{
-					this.OnaddressChanging(value);
-					this.SendPropertyChanging();
-					this._address = value;
-					this.SendPropertyChanged("address");
-					this.OnaddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
-		public int status
-		{
-			get
-			{
-				return this._status;
-			}
-			set
-			{
-				if ((this._status != value))
-				{
-					this.OnstatusChanging(value);
-					this.SendPropertyChanging();
-					this._status = value;
-					this.SendPropertyChanged("status");
-					this.OnstatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", DbType="Int NOT NULL")]
-		public int id_category
-		{
-			get
-			{
-				return this._id_category;
-			}
-			set
-			{
-				if ((this._id_category != value))
-				{
-					if (this._category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_categoryChanging(value);
-					this.SendPropertyChanging();
-					this._id_category = value;
-					this.SendPropertyChanged("id_category");
-					this.Onid_categoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="pitch_booking", Storage="_bookings", ThisKey="id", OtherKey="id_pitch")]
-		public EntitySet<booking> bookings
-		{
-			get
-			{
-				return this._bookings;
-			}
-			set
-			{
-				this._bookings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_pitch", Storage="_category", ThisKey="id_category", OtherKey="id", IsForeignKey=true)]
-		public category category
-		{
-			get
-			{
-				return this._category.Entity;
-			}
-			set
-			{
-				category previousValue = this._category.Entity;
-				if (((previousValue != value) 
-							|| (this._category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._category.Entity = null;
-						previousValue.pitches.Remove(this);
-					}
-					this._category.Entity = value;
-					if ((value != null))
-					{
-						value.pitches.Add(this);
-						this._id_category = value.id;
-					}
-					else
-					{
-						this._id_category = default(int);
-					}
-					this.SendPropertyChanged("category");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_bookings(booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.pitch = this;
-		}
-		
-		private void detach_bookings(booking entity)
-		{
-			this.SendPropertyChanging();
-			entity.pitch = null;
 		}
 	}
 	
@@ -919,6 +668,257 @@ namespace QLSBD
 		{
 			this.SendPropertyChanging();
 			entity.category = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pitch")]
+	public partial class pitch : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private string _introduction;
+		
+		private string _address;
+		
+		private int _status;
+		
+		private int _id_category;
+		
+		private EntitySet<booking> _bookings;
+		
+		private EntityRef<category> _category;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnintroductionChanging(string value);
+    partial void OnintroductionChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    partial void OnstatusChanging(int value);
+    partial void OnstatusChanged();
+    partial void Onid_categoryChanging(int value);
+    partial void Onid_categoryChanged();
+    #endregion
+		
+		public pitch()
+		{
+			this._bookings = new EntitySet<booking>(new Action<booking>(this.attach_bookings), new Action<booking>(this.detach_bookings));
+			this._category = default(EntityRef<category>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_introduction", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string introduction
+		{
+			get
+			{
+				return this._introduction;
+			}
+			set
+			{
+				if ((this._introduction != value))
+				{
+					this.OnintroductionChanging(value);
+					this.SendPropertyChanging();
+					this._introduction = value;
+					this.SendPropertyChanged("introduction");
+					this.OnintroductionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string address
+		{
+			get
+			{
+				return this._address;
+			}
+			set
+			{
+				if ((this._address != value))
+				{
+					this.OnaddressChanging(value);
+					this.SendPropertyChanging();
+					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
+		public int status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", DbType="Int NOT NULL")]
+		public int id_category
+		{
+			get
+			{
+				return this._id_category;
+			}
+			set
+			{
+				if ((this._id_category != value))
+				{
+					if (this._category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_categoryChanging(value);
+					this.SendPropertyChanging();
+					this._id_category = value;
+					this.SendPropertyChanged("id_category");
+					this.Onid_categoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="pitch_booking", Storage="_bookings", ThisKey="id", OtherKey="id_pitch")]
+		public EntitySet<booking> bookings
+		{
+			get
+			{
+				return this._bookings;
+			}
+			set
+			{
+				this._bookings.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_pitch", Storage="_category", ThisKey="id_category", OtherKey="id", IsForeignKey=true)]
+		public category category
+		{
+			get
+			{
+				return this._category.Entity;
+			}
+			set
+			{
+				category previousValue = this._category.Entity;
+				if (((previousValue != value) 
+							|| (this._category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._category.Entity = null;
+						previousValue.pitches.Remove(this);
+					}
+					this._category.Entity = value;
+					if ((value != null))
+					{
+						value.pitches.Add(this);
+						this._id_category = value.id;
+					}
+					else
+					{
+						this._id_category = default(int);
+					}
+					this.SendPropertyChanged("category");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_bookings(booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.pitch = this;
+		}
+		
+		private void detach_bookings(booking entity)
+		{
+			this.SendPropertyChanging();
+			entity.pitch = null;
 		}
 	}
 }

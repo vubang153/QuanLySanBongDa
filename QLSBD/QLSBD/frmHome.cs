@@ -29,16 +29,9 @@ namespace QLSBD
             this.showCbbCategory(cbbPitchName);
             this.showCbbCategory(cbbTypeOfPitch);
             this.setTimePicker();
-            this.setCbbTypeOfStatus();
             this.showDgvPitchList();
         }
-        // Hàm set kiểu booking
-        private void setCbbTypeOfStatus()
-        {
-            cbbBookingType.Items.Add("Đặt ngay");
-            cbbBookingType.Items.Add("Đặt trước");
-            cbbBookingType.SelectedItem = "Đặt ngay";
-        }
+      
         // Hàm in ra giá trị của phần chọn thời gian
         private void setTimePicker()
         {
@@ -142,7 +135,6 @@ namespace QLSBD
                 int timeBooking = (60 * hoursPicker) + minutesPicker;
                 int creater = cbbCreater.SelectedIndex;
                 string note = tbNote.Text;
-                String bookingType = cbbBookingType.Text;
                 // Set giá trị vào thực thể
                 booking.id_pitch = pitchIndex;
                 booking.time = timeBooking;

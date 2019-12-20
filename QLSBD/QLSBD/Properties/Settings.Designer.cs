@@ -33,5 +33,16 @@ namespace QLSBD.Properties {
                 return ((string)(this["quanlysanbongConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=quanlysanbong;Persist Security Info=True" +
+            ";User ID=luan;Password=luan00")]
+        public string quanlysanbongConnectionString1 {
+            get {
+                return ((string)(this["quanlysanbongConnectionString1"]));
+            }
+        }
     }
 }
