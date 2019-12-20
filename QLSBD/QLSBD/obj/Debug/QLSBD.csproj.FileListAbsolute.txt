@@ -18,3 +18,4 @@ C:\Users\Pham Huu Luan\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QL
 C:\Users\Pham Huu Luan\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.csproj.GenerateResource.cache
 C:\Users\Pham Huu Luan\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.exe
 C:\Users\Pham Huu Luan\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.pdb
+C:\Users\Admin\Documents\GitHub\QuanLySanBongDa\QLSBD\QLSBD\obj\Debug\QLSBD.frmCategory.resources

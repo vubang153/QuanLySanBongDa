@@ -31,7 +31,7 @@ namespace QLSBD
             this.setTimePicker();
             this.showDgvPitchList();
         }
-      
+
         // Hàm in ra giá trị của phần chọn thời gian
         private void setTimePicker()
         {
@@ -160,7 +160,7 @@ namespace QLSBD
             pitch pitch = new pitch();
             pitch.name = pitchName;
             pitch.introduction = pitchIntroduction;
-            pitch.id_category= pitchType;
+            pitch.id_category = pitchType;
             pitch.address = pitchAddress;
             // Xác nhận và Insert vào csdl
             var confirmResult = this.messageConfirm("Bạn muốn thêm sân bóng này chứ ?");
@@ -201,31 +201,37 @@ namespace QLSBD
         {
             if (this.messageConfirm("Bạn muốn sửa chứ ?") == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvPitchList.CurrentRow.Cells["STT"].Value.ToString());
-                var query = from pitch in db.pitches
-                            where pitch.id == id
-                            select pitch;
-                foreach (pitch pitch in query)
+                if (tbPitchAddress.Text == "" || tbPitchIntroduction.Text == "" || tbPitchName.Text == "")
                 {
-                    pitch.id_category = Convert.ToInt32(cbbTypeOfPitch.SelectedValue.ToString());
-                    pitch.name = tbPitchName.Text.ToString();
-                    pitch.introduction = tbPitchIntroduction.Text.ToString();
-                    pitch.address = tbPitchAddress.Text.ToString();
+                    MessageBox.Show("Bạn cần nhập vào các truờng");
                 }
-                try
+                else
                 {
-                    db.SubmitChanges();
-                    MessageBox.Show("Sửa thành công");
-                    this.reloadTabPitchList();
+                    int id = Convert.ToInt32(dgvPitchList.CurrentRow.Cells["STT"].Value.ToString());
+                    var query = from pitch in db.pitches
+                                where pitch.id == id
+                                select pitch;
+                    foreach (pitch pitch in query)
+                    {
+                        pitch.id_category = Convert.ToInt32(cbbTypeOfPitch.SelectedValue.ToString());
+                        pitch.name = tbPitchName.Text.ToString();
+                        pitch.introduction = tbPitchIntroduction.Text.ToString();
+                        pitch.address = tbPitchAddress.Text.ToString();
+                    }
+                    try
+                    {
+                        db.SubmitChanges();
+                        MessageBox.Show("Sửa thành công");
+                        this.reloadTabPitchList();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi !!!");
+                    }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi !!!");
-                }
-                
             }
-            
-            
+
+
 
         }
 
@@ -259,7 +265,7 @@ namespace QLSBD
                     {
                         MessageBox.Show("Lỗi !!!");
                     }
-                    
+
                 }
 
             }
@@ -269,9 +275,10 @@ namespace QLSBD
             }
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
+        private void btnOpenFormAddNewCategory_Click(object sender, EventArgs e)
         {
-
+            frmCategory frmCategory = new frmCategory();
+            frmCategory.Show();
         }
     }
 }

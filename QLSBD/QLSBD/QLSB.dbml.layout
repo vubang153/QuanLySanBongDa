@@ -2,49 +2,49 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="QLSB">
   <DataContextMoniker Name="/QLSBDataContext" />
   <nestedChildShapes>
-    <classShape Id="daca8c48-8840-448e-a0b1-f0b73db6752f" absoluteBounds="3.5, 5.375, 2, 1.3862939453125005">
+    <classShape Id="2ef9d677-ea45-419d-b23e-a8ea8b2a5a3e" absoluteBounds="3.5, 5.375, 2, 1.3862939453125005">
       <DataClassMoniker Name="/QLSBDataContext/admin" />
       <nestedChildShapes>
-        <elementListCompartment Id="d89d9d58-0ebb-48ff-a185-9e2d36fac910" absoluteBounds="3.515, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3360a7ad-43a8-4594-9a97-5a591a2f1b43" absoluteBounds="3.515, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="44af9728-af94-464c-bdae-bf0806cd4306" absoluteBounds="6.25, 1, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/QLSBDataContext/booking" />
-      <nestedChildShapes>
-        <elementListCompartment Id="11985e76-6d95-4083-95d3-2dbb2795131f" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="05b7724d-c295-427f-940d-ca2bf737542e" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/QLSBDataContext/category" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a0275c07-f214-4c2a-a12c-734f62ecf4a3" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="46f0f5ea-bad1-417f-8b1d-4f1162221794" absoluteBounds="3.5, 1.125, 2, 1.9631982421875003">
+    <classShape Id="ff060c26-b933-4b6c-996b-894706b67e63" absoluteBounds="3.5, 1.125, 2, 1.9631982421875003">
       <DataClassMoniker Name="/QLSBDataContext/pitch" />
       <nestedChildShapes>
-        <elementListCompartment Id="6e66a021-a3c9-488f-9d03-1202a74fe223" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3d295503-2390-40e4-8e61-38e6984f7c52" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4d85f5e4-2003-43e6-bed9-697001bb3e9d" absoluteBounds="6.25, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/QLSBDataContext/booking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c5c9b982-1fa8-47f2-bf95-1625f807c5fe" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="db35383b-d58b-4d37-a35c-ce48ff2e777e" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/QLSBDataContext/category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4ff5ea1-d438-447e-8f28-ed1c2a6ea025" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(5.5 : 6.06814697265625); (7.25 : 6.06814697265625); (7.25 : 3.34780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QLSBDataContext/admin/admin_booking" />
       <nodes>
-        <classShapeMoniker Id="daca8c48-8840-448e-a0b1-f0b73db6752f" />
-        <classShapeMoniker Id="44af9728-af94-464c-bdae-bf0806cd4306" />
+        <classShapeMoniker Id="2ef9d677-ea45-419d-b23e-a8ea8b2a5a3e" />
+        <classShapeMoniker Id="4d85f5e4-2003-43e6-bed9-697001bb3e9d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 2.10659912109375); (6.25 : 2.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QLSBDataContext/pitch/pitch_booking" />
       <nodes>
-        <classShapeMoniker Id="46f0f5ea-bad1-417f-8b1d-4f1162221794" />
-        <classShapeMoniker Id="44af9728-af94-464c-bdae-bf0806cd4306" />
+        <classShapeMoniker Id="ff060c26-b933-4b6c-996b-894706b67e63" />
+        <classShapeMoniker Id="4d85f5e4-2003-43e6-bed9-697001bb3e9d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QLSBDataContext/category/category_pitch" />
       <nodes>
-        <classShapeMoniker Id="05b7724d-c295-427f-940d-ca2bf737542e" />
-        <classShapeMoniker Id="46f0f5ea-bad1-417f-8b1d-4f1162221794" />
+        <classShapeMoniker Id="db35383b-d58b-4d37-a35c-ce48ff2e777e" />
+        <classShapeMoniker Id="ff060c26-b933-4b6c-996b-894706b67e63" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -1,11 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="quanlysanbong" Class="QLSBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=quanlysanbong;Persist Security Info=True;User ID=luan" SettingsObjectName="QLSBD.Properties.Settings" SettingsPropertyName="quanlysanbongConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS02;Initial Catalog=quanlysanbong;Persist Security Info=True;User ID=admin" SettingsObjectName="QLSBD.Properties.Settings" SettingsPropertyName="quanlysanbongConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.admin" Member="admins">
     <Type Name="admin">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="admin_booking" Member="bookings" ThisKey="id" OtherKey="id_user" Type="booking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pitch" Member="pitches">
+    <Type Name="pitch">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="introduction" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="pitch_booking" Member="bookings" ThisKey="id" OtherKey="id_pitch" Type="booking" />
+      <Association Name="category_pitch" Member="category" ThisKey="id_category" OtherKey="id" Type="category" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.bookings" Member="bookings">
@@ -27,18 +39,6 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="category" Member="category1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="category_pitch" Member="pitches" ThisKey="id" OtherKey="id_category" Type="pitch" />
-    </Type>
-  </Table>
-  <Table Name="dbo.pitch" Member="pitches">
-    <Type Name="pitch">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="introduction" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="pitch_booking" Member="bookings" ThisKey="id" OtherKey="id_pitch" Type="booking" />
-      <Association Name="category_pitch" Member="category" ThisKey="id_category" OtherKey="id" Type="category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
